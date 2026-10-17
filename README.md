@@ -79,7 +79,3 @@ Refer to the images below for the benchmark results:
 | Execution Time (All Cases) | Boundary Check (XMM and YMM) |
 |:---:|:---:|
 | ![All](screenshots/all_cases_timing.png) | ![Boundary](screenshots/boundary_check.png) |
-
-
-## Execution Video
-[Google Drive Link](link)
