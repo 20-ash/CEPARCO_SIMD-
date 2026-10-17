@@ -44,8 +44,6 @@ In Debug mode, SIMD XMM is the fastest overall, reaching 2.86× speedup over C, 
 | **SIMD XMM** | 2.78x | 2.86x |
 | **SIMD YMM** | 2.86x | 2.50x |
 
-To analyze the results, Debug and Release modes should be differentiated first. Debug mode is used primarily during the development stage, wherein the code is run as it is written. No compiler optimizations are performed, and debugging information is kept so that the programmer can stop the code at breakpoints, track the values in variables, perform code line by line, etc. Release mode, however, is ideally used for production or actual deployment. Thus, compiler optimizations are maximized, and irrelevant or inefficient code is often changed when translated to machine code. Some examples include omitting variables (in favor of using registers instead), rearranging or combining code snippets, dead code elimination, code hoisting, etc. This naturally makes the code run faster and use less memory space.
-
 The speedups in the table are measured against the C kernel, which is the only kernel the build mode changes. The assembly kernels are assembled by NASM, so their machine code is identical in Debug and Release. In Debug, the C reference is unoptimized, so it runs slower and therefore it inflates every speedup. In Release, the compiler optimizes the C loop, which shrinks the x86-64 and XMM speedups slightly (1.82x to 1.75x and 2.86x to 2.78x). YMM moves the other way (2.50x to 2.86x) because its own run-to-run timing was better in the Release run.
 
 <br>
