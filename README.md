@@ -13,6 +13,8 @@ Debug mode is meant for development. The compiler applies no optimizations and k
 
 Release mode is meant for deployment. The compiler applies maximum optimizations and may rewrite inefficient or unnecessary code when generating machine code. Examples include keeping variables in registers instead of memory, reordering or merging statements, removing dead code, and hoisting loop-invariant code. As a result, the program generally runs faster and uses less memory.
 
+<br>
+
 **Release Build**
 | Vector Size (n) | C Implementation | x86-64 Implementation | SIMD XMM | SIMD YMM |
 |:---:|:---:|:---:|:---:|:---:|
