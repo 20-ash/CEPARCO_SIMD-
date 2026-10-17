@@ -24,21 +24,10 @@ loop:
     VMOVDQU XMM1, [RDX + R11 * 4] ; vector B
 
     VCMPPS XMM2, XMM0, XMM1, 1 ; compare if A is less than B
-    VBLENDVPS XMM3, XMM0, XMM1, XMM2 ; blend the results based on the comparison
-    VMOVDQU [R8 + R11 * 4], XMM3 ; store the bigger value
-    VMOVMSKPS R13D, XMM2 ; take highest bit of each lane (4 lanes)
-    XOR R12D, R12D ; counter for idx
-
-idx:
-    MOV R14D, R13D
-    AND R14D, 0x0001 ; takes the value of the lowest bit
-    LEA R15, [R9 + R11 * 4] ; address of the first idx pos in the group
-    MOV [R15 + R12 * 4], R14D ; store the idx value
-    SHR R13D, 1 ; shift to the right to get the next bit
-    INC R12D ; increment the idx counter
-    CMP R12D, 4
-    JL idx
-
+    VMAXPS  XMM3, XMM0, XMM1      ; max(A,B)
+    VMOVUPS [R8 + R11*4], XMM3    ; store C
+    VPSRLD  XMM2, XMM2, 31        ; each 32 bit lane shifts 31 bits to the right then get the remaining one bit and pad the upper portions with 0s
+    VMOVDQU [R9 + R11*4], XMM2    ; store idx
     ADD R11, 4
     DEC R10D
     JNZ loop

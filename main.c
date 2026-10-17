@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <math.h>
+#include <stdlib.h>
 
 extern void kernel_asm_x64(float*, float*, float*, int*, int);
 extern void kernel_avx2_xmm(float*, float*, float*, int*, int);
@@ -49,9 +50,9 @@ void kernel_c(float* A, float* B, float* C, int* idx,int size) {
 	}
 }
 
-int sanity_check(const float* C, const int* idx, const float* asm, const int* asm_idx, int size) {
+int sanity_check(const float* C, const int* idx, const float* kernel, const int* kernel_idx, int size) {
 	for (int i = 0; i < size; i++)
-		if (C[i] != asm[i] || idx[i] != asm_idx[i]) {
+		if (C[i] != kernel[i] || idx[i] != kernel_idx[i]) {
 			return 0;
 		}
 	return 1;
@@ -71,8 +72,8 @@ void print_first_last5(float* kernel, int* idx, int size, const char* label) {
 }
 
 int main() {
-	int n[] = {1048576, 33554432, 268435456, 1003};
-	char* size_label[] = { "2^20", "2^25", "2^30", "Boundary Elements Test Case" };
+	int n[] = {1048576, 67108864, 268435456, 1003};
+	char* size_label[] = { "2^20", "2^26", "2^30", "Boundary Elements Test Case" };
 	int num_sizes = sizeof(n) / sizeof(n[0]);
 
 	for (int i = 0; i < num_sizes; i++) {
