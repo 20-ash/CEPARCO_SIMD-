@@ -137,4 +137,4 @@ Refer to the images below for the benchmark results:
 ### Release Build
 | 2²⁰ | 2²⁶ | 2²⁸ | Boundary 1003 |
 |:---:|:---:|:---:|:---:|
-| ![Release 2²⁰](screenshots/RELEASE_2^20.png) | ![Release 2²⁶](screenshots/RELEASE_2^26.png) | ![Release 2²⁸](screenshots/RELEASE_2^28.png) | ![Release 1003](screenshots/RELEASE_1003.png) |
+| ![Release 2²⁰](screenshots/RELEASE_220.png) | ![Release 2²⁶](screenshots/RELEASE_2^26.png) | ![Release 2²⁸](screenshots/RELEASE_2^28.png) | ![Release 1003](screenshots/RELEASE_1003.png) |
