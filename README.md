@@ -60,7 +60,7 @@ The C version was used as the answer key. The first 5 and last 5 elements were d
 <br>
 
 - **Problems Encountered and Solutions**
-### Challenge 1: Indexing through arrays A and B
+**Challenge 1: Indexing through arrays A and B**
 
 One of the challenges the group faced was figuring out how to **index** through arrays A and B, especially for the **packed single-precision** values in the XMM and YMM registers.
 
@@ -68,7 +68,7 @@ One of the challenges the group faced was figuring out how to **index** through 
 
 **Moment of realization:** Although confusing at first, the group realized that the index counts **elements**, while memory addresses are in **bytes**. The multiplication by `4` converts one to the other.
 
-### Challenge 2: Vector sizes not divisible by 4 or 8
+**Challenge 2: Vector sizes not divisible by 4 or 8**
 
 The next challenge was handling vector sizes of A and B that are **not divisible** by 4 (XMM) or 8 (YMM).
 
