@@ -7,7 +7,7 @@
 *   **XU, KAI WEN**
 
 ### Documentation
-## Execution Time Comparison
+**Execution Time Comparison**
 
 Debug mode is meant for development. The compiler applies no optimizations and keeps debugging information, so the programmer can pause execution at breakpoints, inspect variable values, and step through the code line by line.
 
