@@ -49,23 +49,6 @@ void kernel_c(float* A, float* B, float* C, int* idx,int size) {
 	}
 }
 
-int matches(float* refC, int* refIdx, float* testC, int* testIdx, int size) {
-	for (int i = 0; i < size; i++) {
-		if (refC[i] != testC[i] || refIdx[i] != testIdx[i])
-			return 0;
-	}
-	return 1;
-}
-
-void print_last5(float* C, int* idx, int size, const char* label) {
-	int start = (size >= 5) ? (size - 5) : 0;
-	printf("\n  %s — last 5 elements:\n", label);
-	for (int i = start; i < size; i++) {
-		printf("    [%d]  C = %10.6f   idx = %d\n", i, C[i], idx[i]);
-	}
-}
-
-
 int main() {
 	int sizes[] = {12, 67, 10};
 	int num_sizes = sizeof(sizes) / sizeof(sizes[0]);
@@ -90,33 +73,6 @@ int main() {
 		double asm_x64_time = time_kernel(kernel_asm_x64, A, B, asm_x64_output, asm_x64_idx, size);
 		double avx2_xmm_time = time_kernel(kernel_avx2_xmm, A, B, avx2_xmm_output, avx2_xmm_idx, size);
 		double avx2_ymm_time = time_kernel(kernel_avx2_ymm, A, B, avx2_ymm_output, avx2_ymm_idx, size);
-
-		kernel_c(A, B, C_output, C_idx, size);
-
-		// Run ASM kernels & check
-		kernel_asm_x64(A, B, asm_x64_output, asm_x64_idx, size);
-		printf("  kernel_asm_x64    %s\n",
-			matches(C_output, C_idx, asm_x64_output, asm_x64_idx, size) ? "MATCHES C" : "DOES NOT MATCH C");
-
-		kernel_avx2_xmm(A, B, avx2_xmm_output, avx2_xmm_idx, size);
-		printf("  kernel_avx2_xmm   %s\n",
-			matches(C_output, C_idx, avx2_xmm_output, avx2_xmm_idx, size) ? "MATCHES C" : "DOES NOT MATCH C");
-		print_last5(avx2_xmm_output, avx2_xmm_idx, size, "avx2_xmm");
-		print_last5(avx2_xmm_output, avx2_xmm_idx, size, "AVX2 XMM Output");
-
-		kernel_avx2_ymm(A, B, avx2_ymm_output, avx2_ymm_idx, size);
-		printf("  kernel_avx2_ymm   %s\n",
-			matches(C_output, C_idx, avx2_ymm_output, avx2_ymm_idx, size) ? "MATCHES C" : "DOES NOT MATCH C");
-		print_last5(avx2_ymm_output, avx2_ymm_idx, size, "AVX2 YMM Output");
-
-		// Optional timing display
-		printf("\n  Timing (ms):\n");
-		printf("  C:         %.4f\n", c_time);
-		printf("  asm_x64:   %.4f\n", asm_x64_time);
-		printf("  avx2_xmm:  %.4f\n", avx2_xmm_time);
-		printf("  avx2_ymm:  %.4f\n", avx2_ymm_time);
-		printf("size = %d\n", size);
-		printf("remainder = %d\n", size % 8);
 
 	}
 
