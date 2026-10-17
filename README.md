@@ -15,6 +15,7 @@
 | **2^20** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
 | **2^26** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
 | **2^30** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
+| **Boundary (n=1003)** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
 | **Geometric Mean** | 0.00x | 0.00x | 0.00x |
 
 **Debug Build**
@@ -24,6 +25,7 @@
 | **2^20** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
 | **2^26** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
 | **2^30** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
+| **Boundary (n=1003)** | 0.000000 | 0.000000 | 0.000000 | 0.000000 |
 | **Geometric Mean** | 0.00x | 0.00x | 0.00x |
 
 <br>
@@ -38,9 +40,9 @@ The C version was used as the answer key. The first 5 and last 5 elements were d
 
 | Kernel | Result |
 |:---:|:---:|
-| x86-64 | Correct |
-| SIMD XMM | Correct |
-| SIMD YMM | Correct |
+| x86-64 | Correct/Passed |
+| SIMD XMM | Correct/Passed |
+| SIMD YMM | Correct/Passed |
 
 <br>
 
