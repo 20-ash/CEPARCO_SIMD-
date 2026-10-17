@@ -60,6 +60,7 @@ The C version was used as the answer key. The first 5 and last 5 elements were d
 <br>
 
 - **Problems Encountered and Solutions**
+
 **Challenge 1: Indexing through arrays A and B**
 
 One of the challenges the group faced was figuring out how to **index** through arrays A and B, especially for the **packed single-precision** values in the XMM and YMM registers.
