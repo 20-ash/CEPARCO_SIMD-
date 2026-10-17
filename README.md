@@ -67,7 +67,7 @@ An array size of 1003 was used to test how the SIMD kernels handle elements that
 
   - YMM (8-wide): Processes 125 blocks of 8 elements, then handles the remaining 3 elements individually.
 
-Result: The first and last 5 elements match the C reference for all kernels. This shows that both SIMD kernels correctly process the leftover elements and produce the expected results for an array size that is not a multiple of their vector widths.
+Result: The first and last 5 elements match the C reference for all kernels [(see images)](#output). This shows that both SIMD kernels correctly process the leftover elements and produce the expected results for an array size that is not a multiple of their vector widths.
 
 <br>
 
@@ -79,7 +79,7 @@ One of the challenges the group faced was figuring out how to **index** through 
 
 **Solution:** The group used an **indexing register** that increments by `4` for XMM and by `8` for YMM. These values represent the number of 32-bit single-precision numbers that each register can hold. The index is then multiplied by `4`, since a single-precision floating-point number takes **4 bytes**.
 
-**Moment of realization:** Although confusing at first, the group realized that the index counts **elements**, while memory addresses are in **bytes**. The multiplication by `4` converts one to the other.
+**Moment of realization:** Although confusing at first, the group realized that the index can be used to count **elements**, while a fixed constant can be used to represent the **number of bytes** of each number. Multiplying them gives the total number of bytes to index or skip through for each loop iteration.
 
 <br>
 
@@ -91,7 +91,7 @@ The next challenge was handling vector sizes of A and B that are **not divisible
 
 **Solution (loop count):** The vector size must also be divided by 4 or 8 to get the new **loop count**. This was done with `SHR R10D, 2` (or `SHR R10D, 3` for YMM), where `R10D` holds the vector size before the shift and the loop count after it.
 
-**Moment of realization:** Since 4 and 8 are powers of 2, the **remainder** and the **quotient** can be found with a bitwise `AND` and a right shift instead of a division.
+**Moment of realization:** Since 4 and 8 are powers of 2, the **remainder** and the **quotient** can be found with a bitwise `AND` and a right shift which is the same as performing division.
 
 <br>
 
@@ -105,7 +105,7 @@ The group had to learn and refresh on the **packed instructions** for the XMM an
 
 <br>
 
-
+<a id="output"></a>
 - **Program Execution Output**
 
 Refer to the images below for the benchmark results:
