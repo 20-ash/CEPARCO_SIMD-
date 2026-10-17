@@ -2,9 +2,9 @@ section .text
 
 default rel
 bits 64
-global kernel_avx2_xmm
+global kernel_avx2_ymm
 
-kernel_avx2_xmm:
+kernel_avx2_ymm:
     MOV R10D, [RSP+40] ; size
     PUSH R12
     PUSH R13
@@ -12,21 +12,21 @@ kernel_avx2_xmm:
     PUSH R15
 
     MOV EAX, R10D
-    AND EAX, 0x0003 ; check remainder
-    SHR R10D, 2 ; number of groupes of 4
+    AND EAX, 0x0007 ; check remainder
+    SHR R10D, 3 ; number of groupes of 8
     XOR R11, R11 ; counter (number of elements)
 
     CMP R10D, 0 ; just jump to remainder if no group
     JE check_remainder
 
 loop:
-    VMOVDQU XMM0, [RCX + R11 * 4] ; vector A
-    VMOVDQU XMM1, [RDX + R11 * 4] ; vector B
+    VMOVDQU YMM0, [RCX + R11 * 4] ; vector A
+    VMOVDQU YMM1, [RDX + R11 * 4] ; vector B
 
-    VCMPPS XMM2, XMM0, XMM1, 1 ; compare if A is less than B
-    VBLENDVPS XMM3, XMM0, XMM1, XMM2 ; blend the results based on the comparison
-    VMOVDQU [R8 + R11 * 4], XMM3 ; store the bigger value
-    VMOVMSKPS R13D, XMM2 ; take highest bit of each lane (4 lanes)
+    VCMPPS YMM2, YMM0, YMM1, 1 ; compare if A is less than B
+    VBLENDVPS YMM3, YMM0, YMM1, YMM2 ; blend the results based on the comparison
+    VMOVDQU [R8 + R11 * 4], YMM3 ; store the bigger value
+    VMOVMSKPS R13D, YMM2 ; take highest bit of each lane (8 lanes)
     XOR R12D, R12D ; counter for idx
 
 idx:
@@ -36,10 +36,10 @@ idx:
     MOV [R15 + R12 * 4], R14D ; store the idx value
     SHR R13D, 1 ; shift to the right to get the next bit
     INC R12D ; increment the idx counter
-    CMP R12D, 4
+    CMP R12D, 8
     JL idx
 
-    ADD R11, 4
+    ADD R11, 8
     DEC R10D
     JNZ loop
 
