@@ -21,7 +21,6 @@
 AVX2 YMM is the fastest across all array sizes, with up to 4.5× speedup over pure C, followed closely by XMM at 4.4×. YMM processes 8 floats per instruction, while XMM processes 4, allowing YMM to handle more elements per iteration. The x86-64 assembly is also faster than pure C by 1.88× because it uses registers directly and avoids unnecessary instructions. However, the speedup does not reach the theoretical 4× or 8× limits because large arrays are memory-bound. Loading and storing data takes up a significant amount of time, limiting the benefits of wider registers.
 
 **Debug Build**
-
 | Vector Size (n) | C Implementation | x86-64 Implementation | SIMD XMM | SIMD YMM |
 |:---:|:---:|:---:|:---:|:---:|
 | **2^20** | 2.07 ms | 0.87 ms | 0.37 ms | 0.47 ms |
@@ -31,8 +30,7 @@ AVX2 YMM is the fastest across all array sizes, with up to 4.5× speedup over pu
 | **Speedup vs C** | — | 1.82x | 2.86x | 2.50x |
 | **Boundary (n=1003)** | < 0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
 
-
-In Debug mode, pure C runs slower because compiler optimizations are disabled, resulting in higher speedups. XMM reaches 5.6× speedup on the smallest array, slightly faster than YMM, likely due to lower overhead for smaller workloads. Overall, SIMD remains faster than x86-64 assembly and pure C, though the gap between XMM and YMM is smaller than in Release mode.
+In Debug mode, SIMD XMM is the fastest overall, reaching 2.86× speedup over C, followed by YMM at 2.50× and x86-64 at 1.82×. XMM is faster than YMM in all three tested sizes, likely because YMM's wider registers do not provide enough benefit to offset their overhead in these tests. Both SIMD kernels outperform C by processing multiple elements per instruction, while x86-64 benefits from using registers directly.
 
 <br>
 
