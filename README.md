@@ -25,7 +25,7 @@ Release mode is meant for deployment. The compiler applies maximum optimizations
 | **Speed up vs C** | - | 1.75× | 2.78x | 2.86x |
 | **Boundary (n=1003)** | <0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
 
-In Release mode, AVX2 YMM is the fastest overall, with a 2.86× speedup over C, followed by XMM at 2.78× and x86-64 at 1.75×. YMM processes 8 floats per instruction, while XMM processes 4, allowing YMM to handle more elements per iteration. However, the performance difference between the two SIMD kernels is small, and the speedup does not reach the theoretical 4× or 8× limits because loading and storing large amounts of data also takes time, which the benefits of wider registers.
+In Release mode, AVX2 YMM is the fastest overall, with a 2.86× speedup over C, followed by XMM at 2.78× and x86-64 at 1.75×. YMM processes 8 floats per instruction, while XMM processes 4, allowing YMM to handle more elements per iteration. However, the performance difference between the two SIMD kernels is small, and the speedup does not reach the theoretical 4× or 8× limits because loading and storing large amounts of data also takes time, which offsets the benefits of wider registers.
 
 **Debug Build**
 | Vector Size (n) | C Implementation | x86-64 Implementation | SIMD XMM | SIMD YMM |
