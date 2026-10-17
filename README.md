@@ -27,8 +27,10 @@ AVX2 YMM is the fastest across all array sizes, with up to 4.5× speedup over pu
 | **2^20** | 2.07 ms | 0.87 ms | 0.37 ms | 0.47 ms |
 | **2^26** | 106.49 ms | 84.08 ms | 58.12 ms | 68.23 ms |
 | **2^28** | 530.53 ms | 264.07 ms | 226.36 ms | 231.47 ms |
+| **Geometric Mean Speedup vs C** | 1 | 0.55 | 0.35 | 0.40 |
+| **Speedup vs C** | — | 1.82x | 2.86x | 2.50x |
 | **Boundary (n=1003)** | < 0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
-| **Geometric Mean Speedup vs C** | — | 2.00× | 3.10× | 2.75× |
+
 
 In Debug mode, pure C runs slower because compiler optimizations are disabled, resulting in higher speedups. XMM reaches 5.6× speedup on the smallest array, slightly faster than YMM, likely due to lower overhead for smaller workloads. Overall, SIMD remains faster than x86-64 assembly and pure C, though the gap between XMM and YMM is smaller than in Release mode.
 
