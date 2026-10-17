@@ -1,4 +1,4 @@
-# PARCO_MCO1
+# CEPARCO_SIMD 
 
 ## 👥 Group Members 
 *   **COPON, MATTHEW JOSHUA**
