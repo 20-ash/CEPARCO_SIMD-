@@ -1,4 +1,4 @@
-# PAPASA_SA_PARCO_MCO1
+# PARCO_MCO1
 
 ## 👥 Group Members 
 *   **COPON, MATTHEW JOSHUA**
@@ -43,7 +43,7 @@ void generate_random_array(float* A, float* B, int size) {
     }
 }
 ```
-Arrays A and B are generated using sinf() and cosf(), with A[i] = sinf(i * 0.002f) and B[i] = cosf(i * 0.001f). Each kernel compares the two arrays and stores the larger value in C[i], while idx[i] is set to 1 if A[i] is greater than or equal to B[i], and 0 otherwise. Timing covers only kernel execution, excluding array initialization and result printing. All tests run in x64 mode with AVX2 enabled, using array sizes of 2²⁰, 2²⁶, 2²⁸, and 1003 elements for the boundary case.
+Arrays A and B are generated using sinf() and cosf(), where A[i] = sinf(i * 0.002f) and B[i] = cosf(i * 0.001f). Each kernel compares the values and stores the larger one in C[i]. The idx[i] is set to 0 if A[i] is greater than or equal to B[i], and 1 otherwise. Timing only covers kernel execution, excluding array initialization and result printing. Each kernel runs 30 times, and the average execution time is recorded for both Debug and Release builds. All tests use x64 mode with AVX2 enabled, with array sizes of 2²⁰, 2²⁶, 2²⁸, and 1003 for the boundary case.
 
 <br>
 
