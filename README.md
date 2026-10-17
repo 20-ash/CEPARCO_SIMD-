@@ -73,6 +73,8 @@ One of the challenges the group faced was figuring out how to **index** through 
 
 **Moment of realization:** Although confusing at first, the group realized that the index counts **elements**, while memory addresses are in **bytes**. The multiplication by `4` converts one to the other.
 
+<br>
+
 **Challenge 2: Vector sizes not divisible by 4 or 8**
 
 The next challenge was handling vector sizes of A and B that are **not divisible** by 4 (XMM) or 8 (YMM).
@@ -82,6 +84,8 @@ The next challenge was handling vector sizes of A and B that are **not divisible
 **Solution (loop count):** The vector size must also be divided by 4 or 8 to get the new **loop count**. This was done with `SHR R10D, 2` (or `SHR R10D, 3` for YMM), where `R10D` holds the vector size before the shift and the loop count after it.
 
 **Moment of realization:** Since 4 and 8 are powers of 2, the **remainder** and the **quotient** can be found with a bitwise `AND` and a right shift instead of a division.
+
+<br>
 
 **Challenge 3: Learning the packed instructions for XMM and YMM**
 
