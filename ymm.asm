@@ -13,7 +13,7 @@ kernel_avx2_ymm:
 
     MOV EAX, R10D
     AND EAX, 0x0007 ; check remainder
-    SHR R10D, 3 ; number of groupes of 8
+    SHR R10D, 3 ; number of groups of 8
     XOR R11, R11 ; counter (number of elements)
 
     CMP R10D, 0 ; just jump to remainder if no group
