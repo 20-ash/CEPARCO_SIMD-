@@ -79,7 +79,7 @@ One of the challenges the group faced was figuring out how to **index** through 
 
 **Solution:** The group used an **indexing register** that increments by `4` for XMM and by `8` for YMM. These values represent the number of 32-bit single-precision numbers that each register can hold. The index is then multiplied by `4`, since a single-precision floating-point number takes **4 bytes**.
 
-**Moment of realization:** Although confusing at first, the group realized that the index counts **elements**, while memory addresses are in **bytes**. The multiplication by `4` converts one to the other.
+**Moment of realization:** Although confusing at first, the group realized that the index can be used to count **elements**, while a fixed constant can be used to represent the **number of bytes** of each number. Multiplying them gives the total number of bytes to index or skip through for each loop iteration.
 
 <br>
 
