@@ -65,6 +65,24 @@ The C version was used as the answer key. The first 5 and last 5 elements were d
 
 - **Problems Encountered and Solutions**
 
+**Challenge 1: Indexing through arrays A and B**
+
+One of the challenges the group faced was figuring out how to **index** through arrays A and B, especially for the **packed single-precision** values in the XMM and YMM registers.
+
+**Solution:** The group used an **indexing register** that increments by `4` for XMM and by `8` for YMM. These values represent the number of 32-bit single-precision numbers that each register can hold. The index is then multiplied by `4`, since a single-precision floating-point number takes **4 bytes**.
+
+**Moment of realization:** Although confusing at first, the group realized that the index counts **elements**, while memory addresses are in **bytes**. The multiplication by `4` converts one to the other.
+
+**Challenge 2: Vector sizes not divisible by 4 or 8**
+
+The next challenge was handling vector sizes of A and B that are **not divisible** by 4 (XMM) or 8 (YMM).
+
+**Solution (remainder):** The group used `AND EAX, 0x0003` (or `0x0007` for YMM) to retrieve the **remainder**. After this instruction, `EAX` holds only the remainder, since the lowest 2 bits (or 3 bits for YMM) of the vector size are the remainder when dividing by 4 (or 8).
+
+**Solution (loop count):** The vector size must also be divided by 4 or 8 to get the new **loop count**. This was done with `SHR R10D, 2` (or `SHR R10D, 3` for YMM), where `R10D` holds the vector size before the shift and the loop count after it.
+
+**Moment of realization:** Since 4 and 8 are powers of 2, the **remainder** and the **quotient** can be found with a bitwise `AND` and a right shift instead of a division.
+
 <br>
 
 
