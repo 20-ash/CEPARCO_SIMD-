@@ -44,7 +44,7 @@ In Debug mode, SIMD XMM is the fastest overall, reaching 2.86× speedup over C, 
 | **SIMD XMM** | 2.78x | 2.86x |
 | **SIMD YMM** | 2.86x | 2.50x |
 
-The speedups in the table are measured against the C kernel, which is the only kernel the build mode changes. The assembly kernels are assembled by NASM, so their machine code is identical in Debug and Release. In Debug, the C reference is unoptimized, so it runs slower and therefore it inflates every speedup. In Release, the compiler optimizes the C loop, which shrinks the x86-64 and XMM speedups slightly (1.82x to 1.75x and 2.86x to 2.78x). YMM moves the other way (2.50x to 2.86x) because its own run-to-run timing was better in the Release run.
+The speedups in the table are measured against the C kernel, which is the only kernel whose code changes between Debug and Release builds. The assembly kernels are assembled by NASM, so their machine code is identical in both builds. In Debug, the C reference is unoptimized, so it runs slower, which raises the speedup of every kernel relative to Release. This matches the x86-64 and XMM results (1.75x to 1.82x and 2.78x to 2.86x). YMM moved the other way (2.86x to 2.50x), so something else outweighed the C effect. Since the YMM code is identical in both builds, this is likely due to run-to-run variation.
 
 <br>
 
