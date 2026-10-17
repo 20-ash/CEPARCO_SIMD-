@@ -49,12 +49,10 @@ void kernel_c(float* A, float* B, float* C, int* idx,int size) {
 	}
 }
 
-int matches(float* refC, int* refIdx, float* testC, int* testIdx, int size) {
-	for (int i = 0; i < size; i++) {
-		if (refC[i] != testC[i] || refIdx[i] != testIdx[i])
-			return 0;
-	}
-	return 1;
+int matches(const float* rC, const int* rIdx, const float* tC, const int* tIdx, int n) {
+    for (int i = 0; i < n; i++)
+        if (rC[i] != tC[i] || rIdx[i] != tIdx[i]) return 0;
+    return 1;
 }
 
 void print_first_last5(float* C, int* idx, int size, const char* label) {
@@ -69,7 +67,6 @@ void print_first_last5(float* C, int* idx, int size, const char* label) {
 		printf("      [%d]  C = %10.6f   idx = %d\n", i, C[i], idx[i]);
 	}
 }
-
 
 int main() {
 	int sizes[] = {12, 67, 10};
@@ -96,25 +93,25 @@ int main() {
 		double avx2_xmm_time = time_kernel(kernel_avx2_xmm, A, B, avx2_xmm_output, avx2_xmm_idx, size);
 		double avx2_ymm_time = time_kernel(kernel_avx2_ymm, A, B, avx2_ymm_output, avx2_ymm_idx, size);
 
+		// Generate reference output
 		kernel_c(A, B, C_output, C_idx, size);
+
+		// Display C reference output
 		print_first_last5(C_output, C_idx, size, "C Output (reference)");
 
-		// Run ASM kernels & check
-		kernel_asm_x64(A, B, asm_x64_output, asm_x64_idx, size);
+		// Check and display ASM outputs
 		printf("\n  kernel_asm_x64    %s\n",
 			matches(C_output, C_idx, asm_x64_output, asm_x64_idx, size) ? "MATCHES C" : "DOES NOT MATCH C");
 		print_first_last5(asm_x64_output, asm_x64_idx, size, "x86-64 Output");
 
-		kernel_avx2_xmm(A, B, avx2_xmm_output, avx2_xmm_idx, size);
 		printf("\n  kernel_avx2_xmm   %s\n",
 			matches(C_output, C_idx, avx2_xmm_output, avx2_xmm_idx, size) ? "MATCHES C" : "DOES NOT MATCH C");
 		print_first_last5(avx2_xmm_output, avx2_xmm_idx, size, "AVX2 XMM Output");
 
-		kernel_avx2_ymm(A, B, avx2_ymm_output, avx2_ymm_idx, size);
 		printf("\n  kernel_avx2_ymm   %s\n",
 			matches(C_output, C_idx, avx2_ymm_output, avx2_ymm_idx, size) ? "MATCHES C" : "DOES NOT MATCH C");
 		print_first_last5(avx2_ymm_output, avx2_ymm_idx, size, "AVX2 YMM Output");
-		
+
 		// Optional timing display
 		printf("\n  Timing (ms):\n");
 		printf("  C:         %.4f\n", c_time);
@@ -123,7 +120,6 @@ int main() {
 		printf("  avx2_ymm:  %.4f\n", avx2_ymm_time);
 		printf("size = %d\n", size);
 		printf("remainder = %d\n", size % 8);
-
 	}
 	return 0;
 }
