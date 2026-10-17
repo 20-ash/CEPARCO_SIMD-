@@ -60,6 +60,13 @@ The C version was used as the answer key. The first 5 and last 5 elements were d
 <br>
 
 - **Boundary Handling**
+An array size of 1003 was used to test how the SIMD kernels handle elements that do not fill a complete vector. Since 1003 is not divisible by 4 or 8, both kernels have 3 remaining elements after processing their full blocks.
+
+  - XMM (4-wide): Processes 250 blocks of 4 elements, then handles the remaining 3 elements individually.
+
+  - YMM (8-wide): Processes 125 blocks of 8 elements, then handles the remaining 3 elements individually.
+
+Result: The first and last 5 elements match the C reference for all kernels. This shows that both SIMD kernels correctly process the leftover elements and produce the expected results for an array size that is not a multiple of their vector widths.
 
 <br>
 
