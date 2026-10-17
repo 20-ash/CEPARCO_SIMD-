@@ -83,6 +83,14 @@ The next challenge was handling vector sizes of A and B that are **not divisible
 
 **Moment of realization:** Since 4 and 8 are powers of 2, the **remainder** and the **quotient** can be found with a bitwise `AND` and a right shift instead of a division.
 
+**Challenge 3: Learning the packed instructions for XMM and YMM**
+
+The group had to learn and refresh on the **packed instructions** for the XMM and YMM registers. These were needed to perform **value comparisons** between two arrays using `VCMPPS` and `VMAXPS`, and **bit shifting** using `VPSRLD`.
+
+**Solution:** These instructions target all 4 values (XMM) or all 8 values (YMM) **at the same time in one line**. This avoids unnecessary loops.
+
+**Moment of realization:** One packed instruction replaces a whole loop over the individual elements, which is the main benefit of **SIMD**.
+
 <br>
 
 
