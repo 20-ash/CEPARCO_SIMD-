@@ -112,9 +112,9 @@ Refer to the images below for the benchmark results:
 ### Debug Build
 | 2²⁰ | 2²⁶ | 2²⁸ | Boundary 1003 |
 |:---:|:---:|:---:|:---:|
-| ![Debug 2²⁰](screenshots/DEBUG 2^20.png) | ![Debug 2²⁶](screenshots/DEBUG 2^26.png) | ![Debug 2²⁸](screenshots/DEBUG 2^28.png) | ![Debug 1003](screenshots/DEBUG 1003.png) |
+| ![Debug 2²⁰](screenshots/DEBUG_2^20.png) | ![Debug 2²⁶](screenshots/DEBUG_2^26.png) | ![Debug 2²⁸](screenshots/DEBUG_2^28.png) | ![Debug 1003](screenshots/DEBUG_1003.png) |
 
 ### Release Build
 | 2²⁰ | 2²⁶ | 2²⁸ | Boundary 1003 |
 |:---:|:---:|:---:|:---:|
-| ![Release 2²⁰](screenshots/RELEASE 2^20.png) | ![Release 2²⁶](screenshots/RELEASE 2^26.png) | ![Release 2²⁸](screenshots/RELEASE 2^28.png) | ![Release 1003](screenshots/RELEASE 1003.png) |
+| ![Release 2²⁰](screenshots/RELEASE_2^20.png) | ![Release 2²⁶](screenshots/RELEASE_2^26.png) | ![Release 2²⁸](screenshots/RELEASE_2^28.png) | ![Release 1003](screenshots/RELEASE_1003.png) |
