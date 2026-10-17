@@ -67,7 +67,7 @@ An array size of 1003 was used to test how the SIMD kernels handle elements that
 
   - YMM (8-wide): Processes 125 blocks of 8 elements, then handles the remaining 3 elements individually.
 
-Result: The first and last 5 elements match the C reference for all kernels. This shows that both SIMD kernels correctly process the leftover elements and produce the expected results for an array size that is not a multiple of their vector widths.
+Result: The first and last 5 elements match the C reference for all kernels [see images](#problems-faced-and-solutions). This shows that both SIMD kernels correctly process the leftover elements and produce the expected results for an array size that is not a multiple of their vector widths.
 
 <br>
 
