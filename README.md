@@ -15,8 +15,9 @@
 | **2^20** | 1.73 ms | 0.79 ms | 0.39 ms | 0.38 ms |
 | **2^26** | 113.15 ms | 64.05 ms | 47.06 ms | 46.43 ms |
 | **2^30** | 472.15 ms | 333.72 ms | 235.54 ms | 220.27 ms |
+| **Geometric Mean vs C** | 1 | 0.57 | 0.36 | 0.35 |
+| **Speed up vs C** | - | 1.75× | 2.78x | 2.86x |
 | **Boundary (n=1003)** | <0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
-| **Geometric Mean** | - | 1.88× | 3.10x | 3.21x |
 
 AVX2 YMM is the fastest across all array sizes, with up to 4.5× speedup over pure C, followed closely by XMM at 4.4×. YMM processes 8 floats per instruction, while XMM processes 4, allowing YMM to handle more elements per iteration. The x86-64 assembly is also faster than pure C by 1.88× because it uses registers directly and avoids unnecessary instructions. However, the speedup does not reach the theoretical 4× or 8× limits because large arrays are memory-bound. Loading and storing data takes up a significant amount of time, limiting the benefits of wider registers.
 
