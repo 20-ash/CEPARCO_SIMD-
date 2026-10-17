@@ -38,6 +38,8 @@ void generate_random_array(float* A, float* B, int size) {
         B[i] = cosf(i * 0.001f);
     }
 }
+```
+
 <br>
 
 - **Correctness Check**
