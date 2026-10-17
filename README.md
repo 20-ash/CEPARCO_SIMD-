@@ -108,15 +108,12 @@ The group had to learn and refresh on the **packed instructions** for the XMM an
 - **Program Execution Output**
 
 Refer to the images below for the benchmark results:
+### Debug Build
+| 2²⁰ | 2²⁶ | 2²⁸ | Boundary 1003 |
+|:---:|:---:|:---:|:---:|
+| ![Debug 2²⁰](screenshots/DEBUG_2^20.png) | ![Debug 2²⁶](screenshots/DEBUG_2^26.png) | ![Debug 2²⁸](screenshots/DEBUG_2^28.png) | ![Debug 1003](screenshots/DEBUG_1003.png) |
 
-| C | x86-64 |
-|:---:|:---:|
-| ![C](screenshots/correctness_c.png) | ![x86-64](screenshots/correctness_x86_64.png) |
-
-| SIMD XMM | SIMD YMM |
-|:---:|:---:|
-| ![XMM](screenshots/correctness_xmm.png) | ![YMM](screenshots/correctness_ymm.png) |
-
-| Execution Time (All Cases) | Boundary Check (XMM and YMM) |
-|:---:|:---:|
-| ![All](screenshots/all_cases_timing.png) | ![Boundary](screenshots/boundary_check.png) |
+### Release Build
+| 2²⁰ | 2²⁶ | 2²⁸ | Boundary 1003 |
+|:---:|:---:|:---:|:---:|
+| ![Release 2²⁰](screenshots/RELEASE_2^20.png) | ![Release 2²⁶](screenshots/RELEASE_2^26.png) | ![Release 2²⁸](screenshots/RELEASE_2^28.png) | ![Release 1003](screenshots/RELEASE_1003.png) |
