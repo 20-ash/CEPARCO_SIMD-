@@ -73,7 +73,7 @@ void print_first_last5(float* kernel, int* idx, int size, const char* label) {
 
 int main() {
 	int n[] = {1048576, 67108864, 268435456, 1003};
-	char* size_label[] = { "2^20", "2^26", "2^30", "Boundary Elements Test Case" };
+	char* size_label[] = { "2^20", "2^26", "2^28", "Boundary Elements Test Case" };
 	int num_sizes = sizeof(n) / sizeof(n[0]);
 
 	for (int i = 0; i < num_sizes; i++) {
