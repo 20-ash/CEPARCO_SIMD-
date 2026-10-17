@@ -13,7 +13,7 @@ kernel_avx2_xmm:
 
     MOV EAX, R10D
     AND EAX, 0x0003 ; check remainder
-    SHR R10D, 2 ; number of groupes of 4
+    SHR R10D, 2 ; number of groups of 4
     XOR R11, R11 ; counter (number of elements)
 
     CMP R10D, 0 ; just jump to remainder if no group
