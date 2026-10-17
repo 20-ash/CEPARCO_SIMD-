@@ -39,7 +39,7 @@ In Release mode, AVX2 YMM is the fastest overall, with a 2.86× speedup over C, 
 | **Speedup vs C** | — | 1.82x | 2.86x | 2.50x |
 | **Boundary (n=1003)** | < 0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
 
-In Debug mode, SIMD XMM is the fastest overall, reaching 2.86× speedup over C, followed by YMM at 2.50× and x86-64 at 1.82×. XMM is faster than YMM in all three tested sizes, likely because YMM's wider registers do not provide enough benefit to offset their overhead in these tests. Both SIMD kernels outperform C by processing multiple elements per instruction, while x86-64 benefits from using registers directly.
+In Debug mode, SIMD XMM is the fastest overall, reaching 2.86× speedup over C, followed by YMM at 2.50× and x86-64 at 1.82×. XMM is faster than YMM in all three tested sizes, likely because YMM's wider registers do not provide enough benefit to offset their overhead in these tests. Furthermore, This is because the kernel is memory-bandwidth-bound: at these sizes the arrays do not fit in cache, so performance is limited by how fast data can be read from memory rather than by how many elements each instruction processes essentially memory-bounded bottleneck most likely due to the host's computer specifications. The gap narrows to about 2% at the largest size, where both kernels are limited by DRAM bandwidth. Both SIMD kernels outperform C by processing multiple elements per instruction, while x86-64 benefits from using registers directly.
 
 <br>
 
