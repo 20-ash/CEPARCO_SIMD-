@@ -89,6 +89,23 @@ int main() {
 		int* avx2_xmm_idx = (int*)malloc(size * sizeof(int));
 		int* avx2_ymm_idx = (int*)malloc(size * sizeof(int));
 
+		if (!A || !B || !C || !asm_x64_output || !avx2_xmm_output || !avx2_ymm_output || !idx || !asm_x64_idx || !avx2_xmm_idx || !avx2_ymm_idx) {
+			printf("Memory allocation failed for size %d (%s). Skipping.\n", size, size_label[i]);
+
+			free(A);
+			free(B);
+			free(C);
+			free(asm_x64_output);
+			free(avx2_xmm_output);
+			free(avx2_ymm_output);
+			free(idx);
+			free(asm_x64_idx);
+			free(avx2_xmm_idx);
+			free(avx2_ymm_idx);
+
+			continue;
+		}
+
 		generate_random_array(A, B, size);
 
 		// Time kernel
@@ -99,10 +116,10 @@ int main() {
 
 		// Display execution time
 		printf("Vector Size: %d (%s)\n\n", size, size_label[i]);
-		printf("C Execution time: %.2fms\n", c_time);
-		printf("ASM x64 Execution time: %.2fms\n", asm_x64_time);
-		printf("AVX2 XMM Execution time: %.2fms\n", avx2_xmm_time);
-		printf("AVX2 YMM Execution time: %.2fms\n\n", avx2_ymm_time);
+		printf("C Execution time: %.6fms\n", c_time);
+		printf("ASM x64 Execution time: %.6fms\n", asm_x64_time);
+		printf("AVX2 XMM Execution time: %.6fms\n", avx2_xmm_time);
+		printf("AVX2 YMM Execution time: %.6fms\n\n", avx2_ymm_time);
 
 		// Perform sanity checks
 		if (sanity_check(C, idx, asm_x64_output, asm_x64_idx, size)) {
