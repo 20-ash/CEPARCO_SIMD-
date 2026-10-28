@@ -58,8 +58,8 @@ The speedups in the table are measured against the C kernel, which is the only k
 ```c
 void generate_random_array(float* A, float* B, int size) {
     for (int i = 0; i < size; i++) {
-        A[i] = sinf(i * 0.002f);
-        B[i] = cosf(i * 0.001f);
+        A[i] = sinf(i * 0.001f);
+        B[i] = cosf(i * 0.002f);
     }
 }
 ```
