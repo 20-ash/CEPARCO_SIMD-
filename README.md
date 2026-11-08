@@ -133,17 +133,17 @@ Refer to the images below for the benchmark results:
 
 | Input Size | C (1) | ASM x64 (2) | AVX2 XMM (3) | AVX2 YMM (4) |
 |:---:|:---:|:---:|:---:|:---:|
-| 2^20 | ![C](screenshots/DEBUG_220%20(1).png) | ![x64](screenshots/DEBUG_220%20(2).png) | ![XMM](screenshots/DEBUG_220%20(3).png) | ![YMM](screenshots/DEBUG_220%20(4).png) |
-| 2^26 | ![C](screenshots/DEBUG_226%20(1).png) | ![x64](screenshots/DEBUG_226%20(2).png) | ![XMM](screenshots/DEBUG_226%20(3).png) | ![YMM](screenshots/DEBUG_226%20(4).png) |
-| 2^28 | ![C](screenshots/DEBUG_228%20(1).png) | ![x64](screenshots/DEBUG_228%20(2).png) | ![XMM](screenshots/DEBUG_228%20(3).png) | ![YMM](screenshots/DEBUG_228%20(4).png) |
+| 2^20 | ![C](screenshots/DEBUG%20220%20(1).png) | ![x64](screenshots/DEBUG%20220%20(2).png) | ![XMM](screenshots/DEBUG%20220%20(3).png) | ![YMM](screenshots/DEBUG%20220%20(4).png) |
+| 2^26 | ![C](screenshots/DEBUG%20226%20(1).png) | ![x64](screenshots/DEBUG%20226%20(2).png) | ![XMM](screenshots/DEBUG%20226%20(3).png) | ![YMM](screenshots/DEBUG%20226%20(4).png) |
+| 2^28 | ![C](screenshots/DEBUG%20228%20(1).png) | ![x64](screenshots/DEBUG%20228%20(2).png) | ![XMM](screenshots/DEBUG%20228%20(3).png) | ![YMM](screenshots/DEBUG%20228%20(4).png) |
 
 ### Release Build
 
 | Input Size | C (1) | ASM x64 (2) | AVX2 XMM (3) | AVX2 YMM (4) |
 |:---:|:---:|:---:|:---:|:---:|
-| 2^20 | ![C](screenshots/RELEASE_220%20(1).png) | ![x64](screenshots/RELEASE_220%20(2).png) | ![XMM](screenshots/RELEASE_220%20(3).png) | ![YMM](screenshots/RELEASE_220%20(4).png) |
-| 2^26 | ![C](screenshots/RELEASE_226%20(1).png) | ![x64](screenshots/RELEASE_226%20(2).png) | ![XMM](screenshots/RELEASE_226%20(3).png) | ![YMM](screenshots/RELEASE_226%20(4).png) |
-| 2^28 | ![C](screenshots/RELEASE_228%20(1).png) | ![x64](screenshots/RELEASE_228%20(2).png) | ![XMM](screenshots/RELEASE_228%20(3).png) | ![YMM](screenshots/RELEASE_228%20(4).png) |
+| 2^20 | ![C](screenshots/RELEASE%20220%20(1).png) | ![x64](screenshots/RELEASE%20220%20(2).png) | ![XMM](screenshots/RELEASE%20220%20(3).png) | ![YMM](screenshots/RELEASE%20220%20(4).png) |
+| 2^26 | ![C](screenshots/RELEASE%20226%20(1).png) | ![x64](screenshots/RELEASE%20226%20(2).png) | ![XMM](screenshots/RELEASE%20226%20(3).png) | ![YMM](screenshots/RELEASE%20226%20(4).png) |
+| 2^28 | ![C](screenshots/RELEASE%20228%20(1).png) | ![x64](screenshots/RELEASE%20228%20(2).png) | ![XMM](screenshots/RELEASE%20228%20(3).png) | ![YMM](screenshots/RELEASE%20228%20(4).png) |
 
 ### Boundary Test Case (1003 Elements)
 
