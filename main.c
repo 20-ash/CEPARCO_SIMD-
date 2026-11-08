@@ -114,37 +114,43 @@ int main() {
 		double avx2_xmm_time = time_kernel(kernel_avx2_xmm, A, B, avx2_xmm_output, avx2_xmm_idx, size);
 		double avx2_ymm_time = time_kernel(kernel_avx2_ymm, A, B, avx2_ymm_output, avx2_ymm_idx, size);
 
-		// Display execution time
 		printf("Vector Size: %d (%s)\n\n", size, size_label[i]);
 		printf("C Execution time: %.6fms\n", c_time);
-		printf("ASM x64 Execution time: %.6fms\n", asm_x64_time);
-		printf("AVX2 XMM Execution time: %.6fms\n", avx2_xmm_time);
-		printf("AVX2 YMM Execution time: %.6fms\n\n", avx2_ymm_time);
+		print_first_last5(C, idx, size, "C");
 
-		// Perform sanity checks
+		printf("\n---------------------------------------------------\n\n");
+
+		printf("Vector Size: %d (%s)\n\n", size, size_label[i]);
+		printf("ASM x64 Execution time: %.6fms\n", asm_x64_time);
 		if (sanity_check(C, idx, asm_x64_output, asm_x64_idx, size)) {
 			printf("ASM x64 results are correct.\n");
 		} else {
 			printf("ASM x64 results are incorrect.\n");
 		}
+		print_first_last5(asm_x64_output, asm_x64_idx, size, "ASM x64");
 
+		printf("\n---------------------------------------------------\n\n");
+
+		printf("Vector Size: %d (%s)\n\n", size, size_label[i]);
+		printf("AVX2 XMM Execution time: %.6fms\n", avx2_xmm_time);
 		if (sanity_check(C, idx, avx2_xmm_output, avx2_xmm_idx, size)) {
 			printf("AVX2 XMM results are correct.\n");
 		} else {
 			printf("AVX2 XMM results are incorrect.\n");
 		}
+		print_first_last5(avx2_xmm_output, avx2_xmm_idx, size, "AVX2 XMM");
 
+		printf("\n---------------------------------------------------\n\n");
+
+		printf("Vector Size: %d (%s)\n\n", size, size_label[i]);
+		printf("AVX2 YMM Execution time: %.6fms\n\n", avx2_ymm_time);
 		if (sanity_check(C, idx, avx2_ymm_output, avx2_ymm_idx, size)) {
 			printf("AVX2 YMM results are correct.\n");
 		} else {
 			printf("AVX2 YMM results are incorrect.\n");
 		}
-
-		// Print first and last five elements
-		print_first_last5(C, idx, size, "C");
-		print_first_last5(asm_x64_output, asm_x64_idx, size, "ASM x64");
-		print_first_last5(avx2_xmm_output, avx2_xmm_idx, size, "AVX2 XMM");
 		print_first_last5(avx2_ymm_output, avx2_ymm_idx, size, "AVX2 YMM");
+		
 		printf("\n===================================================\n\n");
 
 		free(A);
