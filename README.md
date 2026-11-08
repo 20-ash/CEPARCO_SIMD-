@@ -127,14 +127,34 @@ The group had to learn and refresh on the **packed instructions** for the XMM an
 
 <a id="output"></a>
 - **Program Execution Output**
-
 Refer to the images below for the benchmark results:
+
 ### Debug Build
-| 2²⁰ | 2²⁶ | 2²⁸ | Boundary 1003 |
-|:---:|:---:|:---:|:---:|
-| ![Debug 2²⁰](screenshots/DEBUG_2^20.png) | ![Debug 2²⁶](screenshots/DEBUG_2^26.png) | ![Debug 2²⁸](screenshots/DEBUG_2^28.png) | ![Debug 1003](screenshots/DEBUG_1003.png) |
+
+| Input Size | C (1) | ASM x64 (2) | AVX2 XMM (3) | AVX2 YMM (4) |
+|:---:|:---:|:---:|:---:|:---:|
+| 2^20 | ![C](screenshots/DEBUG_220%20(1).png) | ![x64](screenshots/DEBUG_220%20(2).png) | ![XMM](screenshots/DEBUG_220%20(3).png) | ![YMM](screenshots/DEBUG_220%20(4).png) |
+| 2^26 | ![C](screenshots/DEBUG_226%20(1).png) | ![x64](screenshots/DEBUG_226%20(2).png) | ![XMM](screenshots/DEBUG_226%20(3).png) | ![YMM](screenshots/DEBUG_226%20(4).png) |
+| 2^28 | ![C](screenshots/DEBUG_228%20(1).png) | ![x64](screenshots/DEBUG_228%20(2).png) | ![XMM](screenshots/DEBUG_228%20(3).png) | ![YMM](screenshots/DEBUG_228%20(4).png) |
 
 ### Release Build
-| 2²⁰ | 2²⁶ | 2²⁸ | Boundary 1003 |
+
+| Input Size | C (1) | ASM x64 (2) | AVX2 XMM (3) | AVX2 YMM (4) |
+|:---:|:---:|:---:|:---:|:---:|
+| 2^20 | ![C](screenshots/RELEASE_220%20(1).png) | ![x64](screenshots/RELEASE_220%20(2).png) | ![XMM](screenshots/RELEASE_220%20(3).png) | ![YMM](screenshots/RELEASE_220%20(4).png) |
+| 2^26 | ![C](screenshots/RELEASE_226%20(1).png) | ![x64](screenshots/RELEASE_226%20(2).png) | ![XMM](screenshots/RELEASE_226%20(3).png) | ![YMM](screenshots/RELEASE_226%20(4).png) |
+| 2^28 | ![C](screenshots/RELEASE_228%20(1).png) | ![x64](screenshots/RELEASE_228%20(2).png) | ![XMM](screenshots/RELEASE_228%20(3).png) | ![YMM](screenshots/RELEASE_228%20(4).png) |
+
+### Boundary Test Case (1003 Elements)
+
+#### Debug Build
+
+| C (1) | ASM x64 (2) | AVX2 XMM (3) | AVX2 YMM (4) |
 |:---:|:---:|:---:|:---:|
-| ![Release 2²⁰](screenshots/RELEASE_220.png) | ![Release 2²⁶](screenshots/RELEASE_2^26.png) | ![Release 2²⁸](screenshots/RELEASE_2^28.png) | ![Release 1003](screenshots/RELEASE_1003.png) |
+| ![C](screenshots/DEBUG%20BOUNDARY%20(1).png) | ![x64](screenshots/DEBUG%20BOUNDARY%20(2).png) | ![XMM](screenshots/DEBUG%20BOUNDARY%20(3).png) | ![YMM](screenshots/DEBUG%20BOUNDARY%20(4).png) |
+
+#### Release Build
+
+| C (1) | ASM x64 (2) | AVX2 XMM (3) | AVX2 YMM (4) |
+|:---:|:---:|:---:|:---:|
+| ![C](screenshots/RELEASE%20BOUNDARY%20(1).png) | ![x64](screenshots/RELEASE%20BOUNDARY%20(2).png) | ![XMM](screenshots/RELEASE%20BOUNDARY%20(3).png) | ![YMM](screenshots/RELEASE%20BOUNDARY%20(4).png) |
