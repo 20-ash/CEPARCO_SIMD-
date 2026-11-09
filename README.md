@@ -43,9 +43,9 @@ In Release mode, AVX2 YMM is the fastest overall, with a 2.86× speedup over C, 
 **Debug Build**
 | Vector Size (n) | C Implementation | x86-64 Implementation | SIMD XMM | SIMD YMM |
 |:---:|:---:|:---:|:---:|:---:|
-| **2^20** | 2.07 ms | 0.87 ms | 0.37 ms | 0.47 ms |
-| **2^26** | 106.49 ms | 84.08 ms | 58.12 ms | 68.23 ms |
-| **2^28** | 530.53 ms | 264.07 ms | 226.36 ms | 231.47 ms |
+| **2^20** | 2.83 ms | 1.58 ms | 0.86 ms | 0.92 ms |
+| **2^26** | 159.28 ms | 147.62 ms | 66.88 ms | 58.31 ms |
+| **2^28** | 530.53 ms | 804.69 ms | 211.67 ms | 256.79 ms |
 | **Geometric Mean Speedup vs C** | 1 | 0.55 | 0.35 | 0.40 |
 | **Speedup vs C** | — | 1.82x | 2.86x | 2.50x |
 | **Boundary (n=1003)** | < 0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
