@@ -29,9 +29,9 @@ Release mode is meant for deployment. The compiler applies maximum optimizations
 **Release Build**
 | Vector Size (n) | C Implementation | x86-64 Implementation | SIMD XMM | SIMD YMM |
 |:---:|:---:|:---:|:---:|:---:|
-| **2^20** | 1.73 ms | 0.79 ms | 0.39 ms | 0.38 ms |
-| **2^26** | 113.15 ms | 64.05 ms | 47.06 ms | 46.43 ms |
-| **2^28** | 472.15 ms | 333.72 ms | 235.54 ms | 220.27 ms |
+| **2^20** | 2.83 ms | 1.58 ms | 0.86 ms | 0.92 ms |
+| **2^26** | 159.28 ms | 147.62 ms | 66.88 ms | 58.31 ms |
+| **2^28** | 804.69 ms | 263.91 ms | 211.67 ms | 256.79 ms |
 | **Geometric Mean vs C** | 1 | 0.57 | 0.36 | 0.35 |
 | **Speed up vs C** | - | 1.75× | 2.78x | 2.86x |
 | **Boundary (n=1003)** | <0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
