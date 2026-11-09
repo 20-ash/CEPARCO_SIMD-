@@ -32,9 +32,9 @@ Release mode is meant for deployment. The compiler applies maximum optimizations
 | **2^20** | 2.83 ms | 1.58 ms | 0.86 ms | 0.92 ms |
 | **2^26** | 159.28 ms | 147.62 ms | 66.88 ms | 58.31 ms |
 | **2^28** | 804.69 ms | 263.91 ms | 211.67 ms | 256.79 ms |
-| **Geometric Mean vs C** | 1 | 0.57 | 0.36 | 0.35 |
-| **Speed up vs C** | - | 1.75× | 2.78x | 2.86x |
-| **Boundary (n=1003)** | <0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
+| **Geometric Mean vs C** | 1 | 0.55 | 0.32 | 0.34 |
+| **Speedup vs C** | - | 1.81x | 3.10x | 2.98x |
+| **Boundary (n=1003)** | < 0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
 
 In Release mode, AVX2 YMM is the fastest overall, with a 2.86× speedup over C, followed by XMM at 2.78× and x86-64 at 1.75×. YMM processes 8 floats per instruction, while XMM processes 4, allowing YMM to handle more elements per iteration. However, the performance difference between the two SIMD kernels is small, and the speedup does not reach the theoretical 4× or 8× limits because loading and storing large amounts of data also takes time, which offsets the benefits of wider registers.
 
@@ -46,8 +46,8 @@ In Release mode, AVX2 YMM is the fastest overall, with a 2.86× speedup over C, 
 | **2^20** | 2.83 ms | 1.58 ms | 0.86 ms | 0.92 ms |
 | **2^26** | 159.28 ms | 147.62 ms | 66.88 ms | 58.31 ms |
 | **2^28** | 530.53 ms | 804.69 ms | 211.67 ms | 256.79 ms |
-| **Geometric Mean Speedup vs C** | 1 | 0.55 | 0.35 | 0.40 |
-| **Speedup vs C** | — | 1.82x | 2.86x | 2.50x |
+| **Geometric Mean vs C** | 1 | 0.92 | 0.37 | 0.39 |
+| **Speedup vs C** | - | 1.08x | 2.70x | 2.59x |
 | **Boundary (n=1003)** | < 0.01 ms | < 0.01 ms | < 0.01 ms | < 0.01 ms |
 
 In Debug mode, SIMD XMM is the fastest overall, reaching 2.86× speedup over C, followed by YMM at 2.50× and x86-64 at 1.82×. XMM is faster than YMM in all three tested sizes, likely because YMM's wider registers do not provide enough benefit to offset their overhead in these tests. Furthermore, This is because the kernel is memory-bandwidth-bound: at these sizes the arrays do not fit in cache, so performance is limited by how fast data can be read from memory rather than by how many elements each instruction processes essentially memory-bounded bottleneck most likely due to the host's computer specifications. The gap narrows to about 2% at the largest size, where both kernels are limited by DRAM bandwidth. Both SIMD kernels outperform C by processing multiple elements per instruction, while x86-64 benefits from using registers directly.
