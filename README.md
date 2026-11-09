@@ -8,12 +8,12 @@
 
 ### Documentation
 ![RAM](screenshots/RAM.png)
-The maximum input size was selected as 2²⁸ because the system has 31.4 GB of usable RAM, with approximately 17.4 GB available during testing. Since ten arrays of 4-byte floating-point elements require approximately 10 GiB at this input size, it provides sufficient memory headroom for the experiment while minimizing the risk of allocation failure or excessive memory swapping.
+The maximum input size was selected as 2^28 because the system has 31.4 GB of usable RAM, with approximately 17.4 GB available during testing. Since ten arrays of 4-byte floating-point elements require approximately 10 GiB at this input size, it provides sufficient memory headroom for the experiment while minimizing the risk of allocation failure or excessive memory swapping.
 
-If \(2^{29}\) selected:
+If 2^29 selected:
 Ten arrays of 4-byte floating-point elements require approximately 20 GiB of memory, exceeding the approximately 17.4 GB of available RAM during testing. Therefore, this input size may cause memory allocation failures or excessive memory swapping.
 
-If \(2^{30}\) selected :
+If 2^30 selected :
 Ten arrays of 4-byte floating-point elements require approximately 40 GiB of memory. This exceeds the system's total usable RAM of 31.4 GB, making it impractical to allocate all arrays simultaneously and increasing the likelihood of memory allocation failures.
 
 **Execution Time Comparison**
