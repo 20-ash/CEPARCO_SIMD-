@@ -16,6 +16,8 @@ Ten arrays of 4-byte floating-point elements require approximately 20 GiB of mem
 If 2^30 selected :
 Ten arrays of 4-byte floating-point elements require approximately 40 GiB of memory. This exceeds the system's total usable RAM of 31.4 GB, making it impractical to allocate all arrays simultaneously and increasing the likelihood of memory allocation failures.
 
+<br>
+
 **Execution Time Comparison**
 
 Debug mode is meant for development. The compiler applies no optimizations and keeps debugging information, so the programmer can pause execution at breakpoints, inspect variable values, and step through the code line by line.
